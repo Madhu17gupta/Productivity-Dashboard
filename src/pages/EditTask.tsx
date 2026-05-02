@@ -4,7 +4,7 @@ import TaskForm from "../components/Taskform";
 import { useTasks } from "../hooks/useTasks";
 import type { Task } from "../types/task";
 
-const API_URL = "http://localhost:5000/tasks";
+const API_URL = "https://productivity-dashboard-production-d57d.up.railway.app/tasks";
 
 export default function EditTask() {
   const { id } = useParams();

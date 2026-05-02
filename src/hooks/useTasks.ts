@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from 'react';
 import type { Task } from '../types/task';
 import { useNotificationContext } from '../context/NotificationContext';
 
-const API_URL = "http://localhost:5000/tasks";
+const API_URL = "https://productivity-dashboard-production-d57d.up.railway.app/tasks";
 
 export function useTasks() {
   const [tasks, setTasks] = useState<Task[]>([]);
