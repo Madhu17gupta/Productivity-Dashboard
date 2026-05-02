@@ -1,5 +1,6 @@
 // src/context/NotificationContext.tsx
-import { createContext, useContext, ReactNode } from 'react';
+import { createContext, useContext } from 'react';
+import type { ReactNode } from 'react';
 import { useNotifications } from '../hooks/useNotifications';
 import type { Notification, NotificationType } from '../hooks/useNotifications';
 
