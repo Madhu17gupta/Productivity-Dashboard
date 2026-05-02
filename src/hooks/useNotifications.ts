@@ -24,7 +24,7 @@ export function useNotifications() {
     };
 
     const newNotif: Notification = {
-      id: crypto.randomUUID(),
+      id: Date.now().toString() + Math.random().toString(36).substr(2, 9),
       type,
       message: messages[type],
       taskTitle,
