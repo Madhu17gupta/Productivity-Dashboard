@@ -18,7 +18,7 @@ export default function Dashboard() {
       <h1 className="text-4xl sm:text-4xl font-bold tracking-tight text-center mb-5
                bg-gradient-to-r from-pink-600 via-pink-700 to-fuchsia-700
                bg-clip-text text-transparent">
-        Personal Productivity Dashboard
+      Productivity Dashboard
       </h1>
 
       <div className="flex items-center gap-6 bg-white rounded-2xl p-5 shadow-md mb-10 border border-gray-100">
@@ -28,7 +28,7 @@ export default function Dashboard() {
           className="w-24 h-24 rounded-full ring-4 ring-pink-500 object-cover"
         />
         <div>
-          <h2 className="text-2xl font-bold text-black-900">Anshika Ojha</h2>
+          <h2 className="text-2xl font-bold text-black-900">Madhu Gupta</h2>
           <p className="mt-1 font-semibold text-gray-500">Stay consistent. Stay productive.</p>
         </div>
       </div>
