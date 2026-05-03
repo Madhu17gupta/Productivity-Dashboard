@@ -1,4 +1,3 @@
-// src/components/NotificationPanel.tsx
 import { useEffect, useRef, useState } from 'react';
 import type { Notification } from '../hooks/useNotifications';
 
@@ -33,16 +32,11 @@ function timeAgo(isoString: string): string {
 }
 
 export default function NotificationPanel({
-  notifications,
-  unreadCount,
-  onMarkAllRead,
-  onMarkOneRead,
-  onClearAll,
+  notifications, unreadCount, onMarkAllRead, onMarkOneRead, onClearAll,
 }: Props) {
   const [open, setOpen] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
 
-  // Close on outside click
   useEffect(() => {
     function handleClick(e: MouseEvent) {
       if (panelRef.current && !panelRef.current.contains(e.target as Node)) {
@@ -61,7 +55,7 @@ export default function NotificationPanel({
           setOpen(prev => !prev);
           if (!open && unreadCount > 0) onMarkAllRead();
         }}
-        className="relative p-2 rounded-full hover:bg-pink-100 transition"
+        className="relative p-2 rounded-full hover:bg-pink-100/30 transition"
         title="Notifications"
       >
         <span className="text-2xl">🔔</span>
@@ -72,13 +66,19 @@ export default function NotificationPanel({
         )}
       </button>
 
-      {/* Dropdown Panel */}
+      {/* Dropdown Panel — fixed width, left-aligned on mobile */}
       {open && (
-        <div className="absolute right-0 mt-2 w-80 sm:w-96 bg-white rounded-2xl shadow-2xl border border-gray-100 z-50 overflow-hidden">
+        <div className="absolute right-0 mt-2 w-[92vw] max-w-sm bg-white rounded-2xl shadow-2xl border border-gray-100 z-50 overflow-hidden"
+          style={{ right: 0 }}>
           {/* Header */}
           <div className="flex items-center justify-between px-4 py-3 bg-gradient-to-r from-rose-500 to-fuchsia-600">
             <h3 className="text-white font-semibold text-sm tracking-wide">
-              🔔 Notifications {unreadCount > 0 && <span className="ml-1 bg-white text-rose-600 rounded-full px-2 py-0.5 text-xs font-bold">{unreadCount}</span>}
+              🔔 Notifications
+              {unreadCount > 0 && (
+                <span className="ml-1 bg-white text-rose-600 rounded-full px-2 py-0.5 text-xs font-bold">
+                  {unreadCount}
+                </span>
+              )}
             </h3>
             <button
               onClick={onClearAll}
@@ -89,9 +89,9 @@ export default function NotificationPanel({
           </div>
 
           {/* List */}
-          <div className="max-h-80 overflow-y-auto divide-y divide-gray-50">
+          <div className="max-h-72 overflow-y-auto divide-y divide-gray-50">
             {notifications.length === 0 ? (
-              <div className="flex flex-col items-center justify-center py-10 text-gray-400">
+              <div className="flex flex-col items-center justify-center py-8 text-gray-400">
                 <span className="text-4xl mb-2">📭</span>
                 <p className="text-sm">No notifications yet</p>
               </div>
@@ -102,9 +102,9 @@ export default function NotificationPanel({
                   onClick={() => onMarkOneRead(n.id)}
                   className={`flex items-start gap-3 px-4 py-3 cursor-pointer hover:bg-gray-50 transition border-l-4 ${typeBg[n.type]} ${!n.read ? 'font-semibold' : 'opacity-70'}`}
                 >
-                  <span className="text-xl mt-0.5">{typeIcon[n.type]}</span>
+                  <span className="text-lg mt-0.5 flex-shrink-0">{typeIcon[n.type]}</span>
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm text-gray-800 truncate">{n.message}</p>
+                    <p className="text-sm text-gray-800 break-words">{n.message}</p>
                     <p className="text-xs text-gray-400 mt-0.5">{timeAgo(n.timestamp)}</p>
                   </div>
                   {!n.read && (
