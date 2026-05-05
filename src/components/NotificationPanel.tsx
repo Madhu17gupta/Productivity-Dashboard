@@ -122,7 +122,7 @@ export default function NotificationPanel({
                 onClick={onMarkAllRead}
                 className="text-xs text-rose-500 hover:text-rose-700 font-medium transition"
               >
-                Mark all as read
+               
               </button>
             </div>
           )}
