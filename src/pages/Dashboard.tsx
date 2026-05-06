@@ -28,7 +28,7 @@ export default function Dashboard() {
           className="w-24 h-24 rounded-full ring-4 ring-pink-500 object-cover"
         />
         <div>
-          <h2 className="text-2xl font-bold text-black-900">Madhu Gupta</h2>
+          <h2 className="text-2xl font-bold text-black-900">Tech Fusion</h2>
           <p className="mt-1 font-semibold text-gray-500">Stay consistent. Stay productive.</p>
         </div>
       </div>
